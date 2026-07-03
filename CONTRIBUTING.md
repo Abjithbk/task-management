@@ -180,7 +180,68 @@ It is to learn:
 - Professional development workflow
 
 ---
+## 🔄 Keeping Your Feature Branch Up to Date
 
+If new commits have been merged into `main` while you are working on your feature branch, update your branch before opening a Pull Request.
+
+### 1. Check your current branch
+
+```bash
+git branch
+```
+
+Make sure you are on your feature branch.
+
+### 2. If you have uncommitted changes
+
+Commit them first. If you're not ready to commit, temporarily save them:
+
+```bash
+git stash -u
+```
+
+### 3. Fetch the latest changes
+
+```bash
+git fetch origin
+```
+
+### 4. Rebase your feature branch onto the latest `main`
+
+```bash
+git rebase origin/main
+```
+
+If there are merge conflicts:
+
+1. Resolve the conflicts.
+2. Stage the resolved files.
+
+```bash
+git add .
+```
+
+3. Continue the rebase.
+
+```bash
+git rebase --continue
+```
+
+Repeat these steps until the rebase completes successfully.
+
+### 5. If you used stash
+
+Restore your changes:
+
+```bash
+git stash pop
+```
+
+### Why do we use rebase?
+
+Rebasing keeps your feature branch up to date with the latest changes from `main` while maintaining a clean and easy-to-read commit history.
+
+> **Note:** Always rebase your own feature branch. Never rebase the `main` branch.
 ## 💬 Reminder
 
 Think before committing:
