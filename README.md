@@ -50,7 +50,7 @@ source venv/bin/activate
 
 ---
 
-### 3. Install dependencies
+### 3. Install backend dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -58,15 +58,56 @@ pip install -r requirements.txt
 
 ---
 
-### 4. Run the server
+### 4. Install pnpm
+
+Use Corepack if it is available with your Node.js installation:
 
 ```bash
-uvicorn app.main:app --reload
+corepack enable
+corepack prepare pnpm@latest --activate
+```
+
+If you prefer a global install instead:
+
+```bash
+npm install -g pnpm
+```
+
+---
+
+### 5. Install frontend dependencies
+
+```bash
+cd frontend
+pnpm install
+```
+
+---
+
+### 6. Run the backend server
+
+```bash
+cd backend
+uvicorn main:app --reload
 ```
 
 Visit:
 - http://127.0.0.1:8000
 - http://127.0.0.1:8000/docs
+
+---
+
+### 7. Run the frontend app
+
+Open a second terminal and run:
+
+```bash
+cd frontend
+pnpm dev
+```
+
+The frontend will usually run at:
+- http://127.0.0.1:5173
 
 ---
 
