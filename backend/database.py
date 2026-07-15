@@ -6,10 +6,14 @@ from sqlalchemy.orm import sessionmaker
 
 load_dotenv()
 
-
+# Falls back to local SQLite if DATABASE_URL isn't set in .env
 SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL")
 
-connect_args = {"check_same_thread": False} if SQLALCHEMY_DATABASE_URL.startswith("sqlite") else {}
+connect_args = (
+    {"check_same_thread": False}
+    if SQLALCHEMY_DATABASE_URL.startswith("sqlite")
+    else {}
+)
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args=connect_args)
 
