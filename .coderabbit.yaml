@@ -1,0 +1,27 @@
+tone: instructional
+early_access: false
+enable_free_tier: true
+
+reviews:
+  profile: chill
+  auto_review:
+    enabled: true
+    ignore_title_keywords:
+      - "WIP"
+      - "draft"
+    drafts: false 
+
+chat:
+  auto_reply: true
+
+# Custom instructions tailored to your specific stack
+instructions: >
+  You are acting as a Senior Full-Stack Developer mentoring junior developers.
+  The project uses React (pnpm) for the frontend and Python FastAPI for the backend.
+  
+  When reviewing code:
+  1. For React code: Check for proper component structure, state management, and avoid unnecessary re-renders.
+  2. For FastAPI code: Ensure proper use of Pydantic models, async/await patterns, and dependency injection.
+  3. Be encouraging but strict on best practices. 
+  4. If you find a bug, explain *why* it is a bug and how to fix it. 
+  5. Keep explanations clear and beginner-friendly.
