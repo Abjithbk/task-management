@@ -1,22 +1,4 @@
-# --- Python / backend ---
 venv/
 __pycache__/
-*.py[cod]
-*.egg-info/
-.pytest_cache/
-.mypy_cache/
-
-# Environment variables
+*.pyc
 .env
-.env.local
-
-# SQLite database (auto-generated at runtime)
-*.db
-*.sqlite3
-
-
-# --- Editor / OS ---
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
