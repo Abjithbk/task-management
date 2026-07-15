@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-    # ==========================================
+  # ==========================================
   # JOB 1: FRONTEND (React + pnpm)
   # ==========================================
   frontend:
@@ -21,28 +21,28 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # STEP 1: Setup Node.js FIRST (Changed to 22)
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22' # <--- CHANGED from '20' to '22'
-          cache: 'pnpm'
-          cache-dependency-path: './frontend/pnpm-lock.yaml'
-
-      # STEP 2: Install pnpm (Updated to v4, runs in the Node 22 environment)
+      # STEP 1: Install pnpm FIRST
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9 # Keep this as 9, or change to 10 if your local is v10
+          version: 11 # Match this to your local 'pnpm --version'
+
+      # STEP 2: Setup Node.js SECOND (Now it can safely find pnpm to set up the cache)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+          cache-dependency-path: './frontend/pnpm-lock.yaml'
 
       - name: Install dependencies
-        run: pnpm install 
+        run: pnpm install --frozen-lockfile
 
       - name: Build Project
         run: pnpm build 
 
       - name: Run Tests
-        run: pnpm test  
+        run: pnpm test 
 
   # ==========================================
   # JOB 2: BACKEND (Python + FastAPI)
